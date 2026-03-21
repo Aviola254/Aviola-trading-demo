@@ -1,26 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Aviola Trading Demo Site</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Welcome to Aviola Trading Demo!</h1>
-  <p>This site is hosted on GitHub Pages.</p>
-  <p>More features coming soon…</p>
-</body>
-</html>
+  <style>
+    body {
       font-family: Arial, sans-serif;
-      background: #f4f4f9;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
       text-align: center;
       padding: 50px;
+      color: #333;
     }
+
     h1 {
       color: #2c3e50;
+      font-size: 2.5em;
     }
+
     p {
+      font-size: 1.2em;
       color: #555;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a252f;
     }
   </style>
 </head>
@@ -28,5 +43,9 @@
   <h1>Welcome to Aviola Trading Demo!</h1>
   <p>This site is hosted on GitHub Pages.</p>
   <p>More features coming soon…</p>
+
+  <button onclick="alert('Hello Aviola! Your demo site is alive!')">
+    Click Me
+  </button>
 </body>
-  </html>
+</html>
