@@ -2,54 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Aviola Trading Demo Site</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #74ebd5, #ACB6E5);
-      text-align: center;
-      padding: 50px;
-      color: #333;
-    }
-
-    h1 {
-      color: #2c3e50;
-      font-size: 2.5em;
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #555;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #2c3e50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #1a252f;
-    }
-  </style>
+  <title>Aviola Trading Demo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Welcome to Aviola Trading Demo!</h1>
   <p>This site is hosted on GitHub Pages.</p>
-  <p>More features coming soon…</p>
+  <p>More features coming soon...</p>
 
-  <!-- Button -->
+  <!-- Button wired to showMessage() -->
   <button onclick="showMessage()">Click Me</button>
 
-  <!-- Clock placeholder -->
-  <p id="clock"></p>
+  <!-- Placeholder for balance -->
+  <p id="clock">Waiting for balance...</p>
 
-  <!-- Script link (last part of body) -->
+  <!-- Link to your script -->
   <script src="script.js"></script>
 </body>
 </html>
