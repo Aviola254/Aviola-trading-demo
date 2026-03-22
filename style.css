@@ -1,0 +1,173 @@
+body{
+
+background:#0b0f14;
+color:#00ff9c;
+font-family:Arial;
+
+margin:0;
+
+}
+
+
+/* MENU */
+
+#menu{
+
+background:#111;
+
+padding:10px;
+
+border-bottom:1px solid #00ff9c;
+
+}
+
+#menu button{
+
+margin:4px;
+
+padding:8px;
+
+background:black;
+
+color:#00ff9c;
+
+border:1px solid #00ff9c;
+
+cursor:pointer;
+
+}
+
+#menu button:hover{
+
+background:#00ff9c;
+color:black;
+
+}
+
+
+
+/* PAGES */
+
+.page{
+
+display:none;
+
+padding:15px;
+
+}
+
+
+
+/* DASHBOARD */
+
+#balance,
+#profit,
+#accountPanel,
+#history{
+
+margin-top:10px;
+
+padding:10px;
+
+border:1px solid #00ff9c;
+
+background:#05080c;
+
+}
+
+
+
+/* TRADE BUTTONS */
+
+button{
+
+margin:4px;
+
+padding:8px;
+
+background:black;
+
+color:#00ff9c;
+
+border:1px solid #00ff9c;
+
+}
+
+button:hover{
+
+background:#00ff9c;
+color:black;
+
+}
+
+
+
+/* CHART */
+
+#chartBox{
+
+height:350px;
+
+background:black;
+
+border:1px solid #00ff9c;
+
+margin-top:10px;
+
+}
+
+
+
+/* SCANNER */
+
+#scanBox{
+
+border:1px solid #00ff9c;
+
+padding:10px;
+
+margin-top:10px;
+
+}
+
+#signalBox{
+
+margin-top:10px;
+
+color:yellow;
+
+font-size:18px;
+
+}
+
+
+
+/* BOT */
+
+#botType{
+
+margin:10px;
+
+padding:5px;
+
+border:1px solid #00ff9c;
+
+}
+
+
+
+/* INPUT */
+
+input,select{
+
+background:black;
+
+color:#00ff9c;
+
+border:1px solid #00ff9c;
+
+padding:5px;
+
+margin:5px;
+
+}
