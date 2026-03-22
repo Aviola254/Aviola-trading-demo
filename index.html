@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aviola Platform</title>
+  <title>Deriv Test</title>
 </head>
 <body>
 
@@ -12,9 +12,10 @@
 <p id="out"></p>
 
 <script>
-const TOKEN = "***********5iou"; 
 
-function connect(){
+const TOKEN = "2MyyvNOIshKa67H";
+
+function connect() {
 
 const ws = new WebSocket(
 "wss://ws.derivws.com/websockets/v3?app_id=1089"
@@ -22,16 +23,23 @@ const ws = new WebSocket(
 
 ws.onopen = function () {
 
+document.getElementById("out").innerText = "Connecting...";
+
 ws.send(JSON.stringify({
 authorize: TOKEN
 }));
 
 };
 
-ws.onmessage = function(msg){
+ws.onmessage = function (msg) {
 
-document.getElementById("out").innerText =
-msg.data;
+document.getElementById("out").innerText = msg.data;
+
+};
+
+ws.onerror = function () {
+
+document.getElementById("out").innerText = "Error";
 
 };
 
@@ -40,4 +48,4 @@ msg.data;
 </script>
 
 </body>
-  </html>
+</html>
