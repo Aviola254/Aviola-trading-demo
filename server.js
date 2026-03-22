@@ -23,8 +23,7 @@ let sessions = {};
 
 /* ===== DERIV TOKEN ===== */
 
-let DERIV_TOKEN =
-"PUT_TOKEN_HERE";
+ "2MyyvNOIshKa67H";
 
 
 
