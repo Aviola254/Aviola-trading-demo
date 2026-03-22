@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Aviola Advanced Platform</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+AVIOLA ADVANCED PLATFORM
+</div>
+
+<div class="layout">
+
+<div class="menu">
+
+<button onclick="showPage('dashboard')">Dashboard</button>
+
+<button onclick="showPage('trade')">Trade</button>
+
+<button onclick="showPage('chart')">Chart</button>
+
+<button onclick="showPage('scanner')">Scanner</button>
+
+<button onclick="showPage('bot')">Bot</button>
+
+</div>
+
+<div class="main">
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="page active">
+
+<h2>Dashboard</h2>
+
+<p>Connected to Deriv API ready</p>
+
+</div>
+
+
+<!-- TRADE -->
+
+<div id="trade" class="page">
+
+<h2>Trade</h2>
+
+Amount
+
+<input id="amount">
+
+<br><br>
+
+Market
+
+<select id="symbol">
+
+<option value="R_10">Vol10</option>
+
+<option value="R_25">Vol25</option>
+
+<option value="R_50">Vol50</option>
+
+<option value="R_75">Vol75</option>
+
+<option value="R_100">Vol100</option>
+
+</select>
+
+<br><br>
+
+Digits
+
+<br>
+
+<button>OVER</button>
+
+<button>UNDER</button>
+
+<button>EVEN</button>
+
+<button>ODD</button>
+
+<button>MATCH</button>
+
+<button>DIFF</button>
+
+<br><br>
+
+Rise / Fall
+
+<br>
+
+<button>RISE</button>
+
+<button>FALL</button>
+
+<br><br>
+
+Higher / Lower
+
+<br>
+
+<button>HIGHER</button>
+
+<button>LOWER</button>
+
+</div>
+
+
+<!-- CHART -->
+
+<div id="chart" class="page">
+
+<h2>Chart</h2>
+
+<button onclick="startTicks('R_100')">
+
+Start Chart
+
+</button>
+
+<div id="chartBox"></div>
+
+</div>
+
+
+<!-- SCANNER -->
+
+<div id="scanner" class="page">
+
+<h2>Scanner / Analysis</h2>
+
+<button onclick="startScanner()">
+
+Start Scanner
+
+</button>
+
+<div id="scanBox"></div>
+
+<h3 id="signalBox">
+
+Signal: none
+
+</h3>
+
+</div>
+
+
+<!-- BOT -->
+
+<div id="bot" class="page">
+
+<h2>Bot</h2>
+
+<button>Start Bot</button>
+
+<button>Stop Bot</button>
+
+<p>Bot ready</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+<script src="ui.js"></script>
+
+<script src="api.js"></script>
+
+<script src="chart.js"></script>
+
+<script src="scanner.js"></script>
+
+<script src="bot.js"></script>
+
+</body>
+
+  </html>
