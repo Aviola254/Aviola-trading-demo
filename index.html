@@ -1,78 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Aviola Platform</title>
+<title>Aviola Trading Platform</title>
 
 <style>
 
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0f172a;
-  color: white;
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
 }
 
-.navbar {
-  background: #020617;
-  padding: 15px;
-  text-align: center;
-  color: #22c55e;
-  font-size: 20px;
+.navbar{
+background:#020617;
+padding:15px;
+text-align:center;
+color:#22c55e;
+font-size:20px;
 }
 
-.layout {
-  display: flex;
+.layout{
+display:flex;
 }
 
-.menu {
-  width: 150px;
-  background: #020617;
-  height: 100vh;
+.menu{
+width:150px;
+background:#020617;
+height:100vh;
 }
 
-.menu button {
-  width: 100%;
-  padding: 10px;
-  background: none;
-  border: none;
-  color: white;
-  text-align: left;
+.menu button{
+width:100%;
+padding:10px;
+background:none;
+border:none;
+color:white;
+text-align:left;
 }
 
-.menu button:hover {
-  background: #111827;
+.menu button:hover{
+background:#111827;
 }
 
-.main {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
+.main{
+flex:1;
+padding:20px;
+text-align:center;
 }
 
-.box {
-  background: #111827;
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
+.box{
+background:#111827;
+padding:20px;
+border-radius:10px;
+display:inline-block;
 }
 
-input {
-  padding: 10px;
+.page{
+display:none;
 }
 
-.connect {
-  background: #22c55e;
-  border: none;
-  padding: 10px;
-  color: white;
+.active{
+display:block;
 }
 
-.page {
-  display: none;
+button{
+padding:8px;
+margin:3px;
 }
 
-.active {
-  display: block;
+.connect{
+background:#22c55e;
+border:none;
+color:white;
 }
 
 </style>
@@ -103,7 +103,8 @@ Aviola Trading Platform
 <div class="box">
 
 <input id="token" placeholder="Enter token">
-<br>
+<br><br>
+
 <button class="connect" onclick="connect()">Connect</button>
 
 <p>Login: <span id="login"></span></p>
@@ -117,28 +118,83 @@ Aviola Trading Platform
 
 <!-- TRADE -->
 
-<div id="trade" class="page active">
+<div id="trade" class="page">
 
 <div class="box">
 
-Amount
-<br>
+Amount<br>
 <input id="amount" value="1">
 
-</div>
+<br><br>
+
+Market<br>
+
+<select id="market">
+
+<option value="R_10">Vol10</option>
+<option value="R_25">Vol25</option>
+<option value="R_50">Vol50</option>
+<option value="R_75">Vol75</option>
+<option value="R_100">Vol100</option>
+
+<option value="1HZ10V">Vol10 1s</option>
+<option value="1HZ25V">Vol25 1s</option>
+<option value="1HZ50V">Vol50 1s</option>
+<option value="1HZ75V">Vol75 1s</option>
+<option value="1HZ100V">Vol100 1s</option>
+
+</select>
+
+<br><br>
+
+Digits<br>
+
+<button onclick="buy('DIGITOVER')">OVER</button>
+<button onclick="buy('DIGITUNDER')">UNDER</button>
+
+<br>
+
+<button onclick="buy('DIGITEVEN')">EVEN</button>
+<button onclick="buy('DIGITODD')">ODD</button>
+
+<br>
+
+<button onclick="buy('DIGITMATCH')">MATCH</button>
+<button onclick="buy('DIGITDIFF')">DIFF</button>
+
+<br><br>
+
+Rise / Fall<br>
+
+<button onclick="buy('CALL')">RISE</button>
+<button onclick="buy('PUT')">FALL</button>
+
+<br><br>
+
+Higher / Lower<br>
+
+<button onclick="buy('HIGHER')">HIGHER</button>
+<button onclick="buy('LOWER')">LOWER</button>
+
+<p id="tradeResult"></p>
 
 </div>
 
-
-
-
+</div>
 
 
 <!-- BOT -->
 
 <div id="bot" class="page">
 
-<h2>Bot builder coming next</h2>
+<div class="box">
+
+<button onclick="startBot()">Start Bot</button>
+<button onclick="stopBot()">Stop</button>
+
+<p id="botStatus"></p>
+
+</div>
 
 </div>
 
@@ -149,51 +205,116 @@ Amount
 
 <script>
 
-function showPage(name) {
+let ws
+let botRunning=false
+
+function showPage(name){
 
 document.querySelectorAll(".page")
-.forEach(p => p.classList.remove("active"));
+.forEach(p=>p.classList.remove("active"))
 
 document.getElementById(name)
-.classList.add("active");
+.classList.add("active")
 
 }
 
 
-function connect() {
+function connect(){
 
-const TOKEN =
-document.getElementById("token").value;
+const TOKEN=
+document.getElementById("token").value
 
-const ws = new WebSocket(
+ws=new WebSocket(
 "wss://ws.derivws.com/websockets/v3?app_id=1089"
-);
+)
 
-ws.onopen = function () {
+ws.onopen=function(){
 
 ws.send(JSON.stringify({
-authorize: TOKEN
-}));
-
-};
-
-ws.onmessage = function (msg) {
-
-const data = JSON.parse(msg.data);
-
-if (data.authorize) {
-
-login.innerText = data.authorize.loginid;
-balance.innerText = data.authorize.balance;
-currency.innerText = data.authorize.currency;
+authorize:TOKEN
+}))
 
 }
 
-};
+ws.onmessage=function(msg){
+
+const data=JSON.parse(msg.data)
+
+if(data.authorize){
+
+login.innerText=data.authorize.loginid
+balance.innerText=data.authorize.balance
+currency.innerText=data.authorize.currency
+
+}
+
+if(data.buy){
+
+tradeResult.innerText=
+"Bought "+data.buy.contract_id
+
+}
+
+}
+
+}
+
+
+function buy(type){
+
+const amount=
+document.getElementById("amount").value
+
+const symbol=
+document.getElementById("market").value
+
+ws.send(JSON.stringify({
+
+buy:1,
+price:amount,
+
+parameters:{
+amount:amount,
+basis:"stake",
+contract_type:type,
+currency:"USD",
+duration:1,
+duration_unit:"t",
+symbol:symbol
+}
+
+}))
+
+}
+
+
+function startBot(){
+
+botRunning=true
+botStatus.innerText="Running"
+
+loopBot()
+
+}
+
+function stopBot(){
+
+botRunning=false
+botStatus.innerText="Stopped"
+
+}
+
+function loopBot(){
+
+if(!botRunning)return
+
+buy("DIGITEVEN")
+
+setTimeout(loopBot,5000)
 
 }
 
 </script>
 
 </body>
-</html>
+  </html>
