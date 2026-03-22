@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,57 +9,71 @@
 body {
   margin: 0;
   font-family: Arial;
-  background-color: #0f172a;
+  background: #0f172a;
   color: white;
 }
 
-/* NAVBAR */
-
 .navbar {
-  background-color: #020617;
+  background: #020617;
   padding: 15px;
   text-align: center;
-  font-size: 20px;
   color: #22c55e;
-  font-weight: bold;
+  font-size: 20px;
 }
 
-/* CENTER AREA */
+.layout {
+  display: flex;
+}
 
-.container {
+.menu {
+  width: 150px;
+  background: #020617;
+  height: 100vh;
+}
+
+.menu button {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+}
+
+.menu button:hover {
+  background: #111827;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
   text-align: center;
-  margin-top: 40px;
 }
 
 .box {
-  background-color: #111827;
-  display: inline-block;
+  background: #111827;
   padding: 20px;
   border-radius: 10px;
+  display: inline-block;
 }
-
-/* INPUT */
 
 input {
   padding: 10px;
-  border-radius: 5px;
-  border: none;
-  width: 220px;
 }
 
-/* BUTTON */
-
-button {
+.connect {
+  background: #22c55e;
+  border: none;
   padding: 10px;
-  background-color: #22c55e;
-  border: none;
   color: white;
-  border-radius: 5px;
-  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #16a34a;
+.page {
+  display: none;
+}
+
+.active {
+  display: block;
 }
 
 </style>
@@ -70,14 +85,27 @@ button:hover {
 Aviola Trading Platform
 </div>
 
-<div class="container">
+<div class="layout">
+
+<div class="menu">
+
+<button onclick="showPage('dashboard')">Dashboard</button>
+<button onclick="showPage('trade')">Trade</button>
+<button onclick="showPage('bot')">Bot</button>
+
+</div>
+
+<div class="main">
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="page active">
 
 <div class="box">
 
-<input id="token" placeholder="Enter Deriv token">
+<input id="token" placeholder="Enter token">
 <br>
-
-<button onclick="connect()">Connect</button>
+<button class="connect" onclick="connect()">Connect</button>
 
 <p>Login: <span id="login"></span></p>
 <p>Balance: <span id="balance"></span></p>
@@ -87,7 +115,41 @@ Aviola Trading Platform
 
 </div>
 
+
+<!-- TRADE -->
+
+<div id="trade" class="page">
+
+<h2>Trade page coming next</h2>
+
+</div>
+
+
+<!-- BOT -->
+
+<div id="bot" class="page">
+
+<h2>Bot builder coming next</h2>
+
+</div>
+
+
+</div>
+</div>
+
+
 <script>
+
+function showPage(name) {
+
+document.querySelectorAll(".page")
+.forEach(p => p.classList.remove("active"));
+
+document.getElementById(name)
+.classList.add("active");
+
+}
+
 
 function connect() {
 
@@ -112,14 +174,9 @@ const data = JSON.parse(msg.data);
 
 if (data.authorize) {
 
-document.getElementById("login").innerText =
-data.authorize.loginid;
-
-document.getElementById("balance").innerText =
-data.authorize.balance;
-
-document.getElementById("currency").innerText =
-data.authorize.currency;
+login.innerText = data.authorize.loginid;
+balance.innerText = data.authorize.balance;
+currency.innerText = data.authorize.currency;
 
 }
 
