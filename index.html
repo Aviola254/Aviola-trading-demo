@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Deriv Test</title>
+  <title>Aviola Platform</title>
 </head>
 <body>
 
-<h2>Deriv Connection Test</h2>
+<h2>My Deriv Dashboard</h2>
 
 <button onclick="connect()">Connect</button>
 
-<p id="out"></p>
+<p>Login: <span id="login"></span></p>
+<p>Balance: <span id="balance"></span></p>
+<p>Currency: <span id="currency"></span></p>
 
 <script>
 
@@ -23,8 +25,6 @@ const ws = new WebSocket(
 
 ws.onopen = function () {
 
-document.getElementById("out").innerText = "Connecting...";
-
 ws.send(JSON.stringify({
 authorize: TOKEN
 }));
@@ -33,13 +33,20 @@ authorize: TOKEN
 
 ws.onmessage = function (msg) {
 
-document.getElementById("out").innerText = msg.data;
+const data = JSON.parse(msg.data);
 
-};
+if (data.authorize) {
 
-ws.onerror = function () {
+document.getElementById("login").innerText =
+data.authorize.loginid;
 
-document.getElementById("out").innerText = "Error";
+document.getElementById("balance").innerText =
+data.authorize.balance;
+
+document.getElementById("currency").innerText =
+data.authorize.currency;
+
+}
 
 };
 
