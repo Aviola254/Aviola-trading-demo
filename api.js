@@ -11,9 +11,13 @@ ws = new WebSocket(
 
 ws.onopen = function(){
 
+if(token !== ""){
+
 ws.send(JSON.stringify({
 authorize: token
 }));
+
+}
 
 };
 
@@ -22,6 +26,10 @@ ws.onmessage = function(msg){
 let data = JSON.parse(msg.data);
 
 console.log(data);
+
+if(data.msg_type === "tick"){
+handleTick(data);
+}
 
 };
 
