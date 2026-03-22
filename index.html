@@ -15,15 +15,15 @@ body {
 /* NAVBAR */
 
 .navbar {
-  background: #020617;
+  background-color: #020617;
   padding: 15px;
-  font-size: 18px;
-  color: #22c55e;
   text-align: center;
+  font-size: 20px;
+  color: #22c55e;
   font-weight: bold;
 }
 
-/* MAIN BOX */
+/* CENTER AREA */
 
 .container {
   text-align: center;
@@ -31,29 +31,34 @@ body {
 }
 
 .box {
-  background: #111827;
+  background-color: #111827;
   display: inline-block;
   padding: 20px;
   border-radius: 10px;
 }
 
+/* INPUT */
+
 input {
   padding: 10px;
   border-radius: 5px;
   border: none;
+  width: 220px;
 }
+
+/* BUTTON */
 
 button {
   padding: 10px;
-  background: #22c55e;
+  background-color: #22c55e;
   border: none;
   color: white;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 button:hover {
-  background: #16a34a;
+  background-color: #16a34a;
 }
 
 </style>
@@ -69,8 +74,9 @@ Aviola Trading Platform
 
 <div class="box">
 
-<input id="token" placeholder="Enter token">
+<input id="token" placeholder="Enter Deriv token">
 <br>
+
 <button onclick="connect()">Connect</button>
 
 <p>Login: <span id="login"></span></p>
