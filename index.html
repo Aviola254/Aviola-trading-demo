@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Aviola Trading Demo</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Aviola Platform</title>
 </head>
 <body>
-  <h1>Welcome to Aviola Trading Demo!</h1>
-  <p>This site is hosted on GitHub Pages.</p>
-  <p>More features coming soon...</p>
 
-  <!-- Button wired to showMessage() -->
-  <button onclick="showMessage()">Click Me</button>
+<h2>Deriv Connection Test</h2>
 
-  <!-- Placeholder for balance -->
-  <p id="clock">Waiting for balance...</p>
+<button onclick="connect()">Connect</button>
 
-  <!-- Link to your script -->
-  <script src="script.js"></script>
+<p id="out"></p>
+
+<script>
+const TOKEN = "***********5iou"; 
+
+function connect(){
+
+const ws = new WebSocket(
+"wss://ws.derivws.com/websockets/v3?app_id=1089"
+);
+
+ws.onopen = function () {
+
+ws.send(JSON.stringify({
+authorize: TOKEN
+}));
+
+};
+
+ws.onmessage = function(msg){
+
+document.getElementById("out").innerText =
+msg.data;
+
+};
+
+}
+
+</script>
+
 </body>
-</html>
+  </html>
