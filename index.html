@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aviola Trading Platform</title>
+<title>Aviola Platform</title>
 
 <style>
 
 body {
+  margin: 0;
+  font-family: Arial;
   background-color: #0f172a;
   color: white;
-  font-family: Arial;
-  text-align: center;
 }
 
-h2 {
+/* NAVBAR */
+
+.navbar {
+  background: #020617;
+  padding: 15px;
+  font-size: 18px;
   color: #22c55e;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* MAIN BOX */
+
+.container {
+  text-align: center;
+  margin-top: 40px;
 }
 
 .box {
-  background-color: #111827;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
+  background: #111827;
   display: inline-block;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 input {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  margin: 5px;
-  width: 200px;
 }
 
 button {
   padding: 10px;
-  background-color: #22c55e;
+  background: #22c55e;
   border: none;
   color: white;
   border-radius: 5px;
-  cursor: pointer;
+  margin-top: 5px;
 }
 
 button:hover {
-  background-color: #16a34a;
-}
-
-.data {
-  margin-top: 10px;
+  background: #16a34a;
 }
 
 </style>
@@ -54,18 +61,22 @@ button:hover {
 </head>
 <body>
 
-<h2>Aviola Trading Platform</h2>
+<div class="navbar">
+Aviola Trading Platform
+</div>
+
+<div class="container">
 
 <div class="box">
 
-<input id="token" placeholder="Enter Deriv token">
+<input id="token" placeholder="Enter token">
 <br>
 <button onclick="connect()">Connect</button>
 
-<div class="data">
 <p>Login: <span id="login"></span></p>
 <p>Balance: <span id="balance"></span></p>
 <p>Currency: <span id="currency"></span></p>
+
 </div>
 
 </div>
@@ -105,12 +116,6 @@ document.getElementById("currency").innerText =
 data.authorize.currency;
 
 }
-
-};
-
-ws.onerror = function () {
-
-alert("Connection error");
 
 };
 
