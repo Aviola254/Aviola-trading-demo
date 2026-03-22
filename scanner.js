@@ -22,9 +22,7 @@ ws.onmessage = function(msg){
 let data = JSON.parse(msg.data);
 
 if(data.msg_type === "tick"){
-
 handleScan(data.tick.quote);
-
 }
 
 };
@@ -51,6 +49,7 @@ digitList.shift();
 }
 
 drawScanner();
+detectSignal();
 
 }
 
@@ -79,3 +78,26 @@ text += i + " : " + count[i] + "<br>";
 box.innerHTML = text;
 
 }
+
+function detectSignal(){
+
+let signalBox = document.getElementById("signalBox");
+
+if(!signalBox) return;
+
+let last = digitList[digitList.length-1];
+
+if(last == 0 || last == 1){
+signalBox.innerHTML = "Signal: OVER";
+}
+else if(last == 8 || last == 9){
+signalBox.innerHTML = "Signal: UNDER";
+}
+else if(last % 2 == 0){
+signalBox.innerHTML = "Signal: EVEN";
+}
+else{
+signalBox.innerHTML = "Signal: ODD";
+}
+
+  }
