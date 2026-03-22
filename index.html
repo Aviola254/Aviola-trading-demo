@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>BEAST TRADER</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- MENU -->
+
+<div id="menu">
+
+<button onclick="showPage('login')">Login</button>
+
+<button onclick="showPage('dashboard')">Dashboard</button>
+
+<button onclick="showPage('trade')">Trade</button>
+
+<button onclick="showPage('chart')">Chart</button>
+
+<button onclick="showPage('scanner')">Scanner</button>
+
+<button onclick="showPage('bot')">Bot</button>
+
+<button onclick="showPage('settings')">Settings</button>
+
+</div>
+
+
+
+<!-- LOGIN -->
+
+<div id="login" class="page">
+
+<h2>Login</h2>
+
+<input id="user" placeholder="username">
+
+<input id="pass" placeholder="password">
+
+<br><br>
+
+<button onclick="loginUser()">Login</button>
+
+<div id="loginStatus"></div>
+
+</div>
+
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="page">
+
+<h2>Dashboard</h2>
+
+<div id="accountPanel">
+
+Account ready
+
+</div>
+
+<div id="balance">
+
+Balance: 0
+
+</div>
+
+<div id="profit">
+
+Profit: 0
+
+</div>
+
+<div id="history">
+
+History log
+
+</div>
+
+</div>
+
+
+
+<!-- TRADE -->
+
+<div id="trade" class="page">
+
+<h2>Trade</h2>
+
+<button onclick="buyContract('DIGITOVER')">
+OVER
+</button>
+
+<button onclick="buyContract('DIGITUNDER')">
+UNDER
+</button>
+
+<button onclick="buyContract('DIGITEVEN')">
+EVEN
+</button>
+
+<button onclick="buyContract('DIGITODD')">
+ODD
+</button>
+
+<button onclick="buyContract('DIGITDIFF')">
+DIFF
+</button>
+
+<div id="result"></div>
+
+</div>
+
+
+
+<!-- CHART -->
+
+<div id="chart" class="page">
+
+<h2>Chart</h2>
+
+<button onclick="startTicks('R_100')">
+
+Start Chart
+
+</button>
+
+<div id="chartBox"></div>
+
+</div>
+
+
+
+<!-- SCANNER -->
+
+<div id="scanner" class="page">
+
+<h2>Scanner</h2>
+
+<button onclick="startScanner()">
+
+Start Scanner
+
+</button>
+
+<div id="scanBox"></div>
+
+<div id="signalBox"></div>
+
+</div>
+
+
+
+<!-- BOT -->
+
+<div id="bot" class="page">
+
+<h2>Bot Engine</h2>
+
+<div id="botType">
+Strategy: OVER
+</div>
+
+
+<button onclick="setStrategy('DIGITOVER')">OVER</button>
+<button onclick="setStrategy('DIGITUNDER')">UNDER</button>
+<button onclick="setStrategy('DIGITEVEN')">EVEN</button>
+<button onclick="setStrategy('DIGITODD')">ODD</button>
+<button onclick="setStrategy('DIGITDIFF')">DIFF</button>
+
+
+<br><br>
+
+Max trades
+
+<input id="setMax" value="10">
+
+Delay
+
+<input id="setDelay" value="5000">
+
+<br><br>
+
+<button onclick="startBot()">
+
+Start Bot
+
+</button>
+
+<button onclick="stopBot()">
+
+Stop Bot
+
+</button>
+
+
+<h3>Second Bot</h3>
+
+<button onclick="startBot2()">Start Bot 2</button>
+
+<button onclick="stopBot2()">Stop Bot 2</button>
+
+
+</div>
+
+
+
+<!-- SETTINGS -->
+
+<div id="settings" class="page">
+
+<h2>Settings</h2>
+
+Symbol
+
+<select id="setSymbol">
+
+<option value="R_10">Vol10</option>
+<option value="R_25">Vol25</option>
+<option value="R_50">Vol50</option>
+<option value="R_75">Vol75</option>
+<option value="R_100">Vol100</option>
+
+</select>
+
+<br><br>
+
+<button onclick="saveSettings()">
+
+Save Settings
+
+</button>
+
+</div>
+
+
+
+<!-- SCRIPTS -->
+
+<script src="ui.js"></script>
+
+<script src="api.js"></script>
+
+<script src="bot.js"></script>
+
+<script src="scanner.js"></script>
+
+<script src="chart.js"></script>
+
+<script src="settings.js"></script>
+
+<script src="login.js"></script>
+
+
+</body>
+
+  </html>
